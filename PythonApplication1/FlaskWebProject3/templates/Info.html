@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Python Page</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+    <link href='https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css' rel='stylesheet' type='text/css'>
+    <!--<link href="../static/content/bootstrap.min.css" rel="stylesheet" />
+    <script src="../static/scripts/bootstrap.min.js"></script>-->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+
+        body {
+            left: 0%;
+            top: 0%;
+            margin: 0%;
+            padding: 0%;
+            font-family: 'Ubuntu', sans-serif;
+            /*font-weight:700;*/
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
+            margin-inline: 2vw;
+            margin-left: 0%;
+        }
+
+            a:hover {
+                color: grey;
+                text-decoration: none;
+            }
+
+        .pynavbar {
+            background-color: rgb(38 39 40);
+            color: white;
+            height: 8vh;
+            width: 100vw;
+            align-items: center;
+            justify-content: space-between;
+            display: flex;
+        }
+
+        .navbar {
+            width: 90vw;
+        }
+
+        .logbtn {
+            margin-right: 15px;
+        }
+
+        #sub {
+            height: 5vh;
+            background-color: rgb(38 39 40);
+            color: white;
+            border: none;
+        }
+
+            #sub:hover {
+                color: grey;
+            }
+
+        .homeicon {
+            margin-left: 2vw;
+        }
+
+        .slo {
+            margin-top: 2%;
+            margin-left: 0.5vw;
+        }
+
+        .navcon {
+            display: flex;
+        }
+
+        .container-fluid {
+            margin-left: 0%;
+            padding-left: 0%;
+        }
+
+        .btncls {
+            text-align: center;
+        }
+
+        .btncls {
+            margin-bottom: 1vh;
+            text-align: end;
+            /*justify-content: flex-end;*/
+        }
+
+        .dataTable {
+            /*border: 2px solid;*/
+            justify-content: center;
+            border-color: #2e6da4;
+        }
+
+        th {
+            border: 1px solid black;
+            height: 3vh;
+            text-align: center;
+            font-size: medium;
+            background-color:coral;
+            color:white;
+        }
+
+        td {
+            border: 1px solid black;
+            text-align: center;
+        }
+        .mainPage{
+            display:flex;
+        }
+
+        #backbtn {
+            width: 5vw;
+            justify-content: flex-end;
+            text-align: center;
+        }
+
+        .row::before {
+            content: none;
+        }
+
+        .btncls a {
+            margin-right: 0%;
+            padding-right: 0%;
+        }
+        .heading {
+            margin-top: 5vh;
+        }
+
+        .pyImg {
+            width: 60px;
+            height: 60px;
+        }
+        .h3 {
+            margin-left: 6vw;
+            margin-top: 2vw;
+            width: 13vw;
+            text-align:center;
+        }
+        .heading {
+            margin-top: 15vh;
+            font-weight: bolder;
+            font-size: 5rem;
+            padding-left:9vw;
+            color:orangered;
+        }
+        .userName {
+            color: coral;
+            text-align: center;
+        }
+        img{
+            height:30vh;
+            display:flex;
+        }
+    </style>
+    <script>
+        function backtoC() {
+            //window.location.replace = "https://localhost:44384/Profile.aspx";
+            //alert(1);
+            //debugger;
+            //var url = 'https://localhost:44384/Profile.aspx';
+            ////var username = '<%=Session["UserName"].ToString()%>'
+            ////var location = '<%=Session["client"].ToString()%>'
+            ////var token = '<%=Session["token"].ToString()%>'
+            //var username = '{{ name }}';
+            //var form = $('<form action="' + url + '" method="POST">' +
+            //    '<input type="hidden" id="UserId" name="user" value="' + username + '" /> ' +
+            //    '</form>');
+            //$('body').append(form);
+            //form.submit();
+        }
+        function addOrder() {
+            window.location.replace("http://localhost:5000/NewOrder.html");
+        }
+    </script>
+</head>
+<body>
+    <form class="grid" action="/python" method="post">
+        <div class="container-fluid mainPage d-flex">
+            <div class="h3">
+                <img src="../static/imgs/49576_new_add_plus_user_icon.png" />
+                <span id="user" runat="server" class="userName d-block">
+                    {% if name %}
+                    {{name}}
+                    {% endif %}
+                </span>
+            </div>
+            <h1 class="heading"> Welcome to the Python App</h1>
+        </div>
+        <!--<div class="heading">
+        <h1 style="color: black; text-align: center;">Hello , Welcome to Python Page!!!</h1>
+    </div>-->
+        <!--<div class="btncls">
+        <input id="backbtn" type="button" value="Back" name="bk" class="btn btn-primary" onclick="back();" />
+    </div>-->
+        >
+        <div class="container">
+            <div class="row">
+                <div class="btncls justify-content-end mb-1 d-flex">
+                    <a href=additem><input id="addbtn" type="button" value="New Order" name="add" class="btn btn-primary" /></a>
+                    <!--<a href=goback><input id="backbtn" type="button" value="back" name="bk" class="btn btn-primary" /></a>
+                    <input id="backbtn" type="button" value="Back" name="bk" class="btn btn-primary" onclick="backtoC();" />-->
+                </div>
+                <div>
+                    <table id='empTable' class='display dataTable' width='100%'>
+                        <thead>
+                            <tr class="row text-center ">
+                                <th>Order No</th>
+                                <th>Name</th>
+                                <th>Mobile</th>
+                                <th>Client</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for row in data %}
+                            <tr>
+                                <td>{{row[0]}}</td>
+                                <td>{{row[1]}}</td>
+                                <td>{{row[2]}}</td>
+                                <td>{{row[3]}}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+</body>
+</html>

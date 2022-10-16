@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>DataTable</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+    <link href='https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css' rel='stylesheet' type='text/css'>
+    <style>
+        .dataTable {
+            border: 2px solid;
+            justify-content: center;
+        }
+
+        th {
+            border: 1px solid black;
+            height: 5vh;
+            text-align:center;
+            font-size:medium;
+        }
+
+        td {
+            border: 1px solid black;
+            text-align: center;
+        }
+
+        #backbtn {
+            width: 5vw;
+            justify-content: flex-end;
+            text-align: center;
+        }
+        .row::before{
+            content:none;
+        }
+        .btncls{
+            margin-bottom:1vh;
+            text-align:end;
+            /*justify-content: flex-end;*/
+        }
+    </style>
+</head>
+<body>
+    <form action="/ajaxfile" method="post">
+        <div class="container">
+            <div class="row" style="padding:50px;">
+                <div class="btncls justify-content-end mb-1 d-flex">
+                    <input id="backbtn" type="button" value="Back" name="bk" class="btn btn-primary" onclick="back();" />
+                </div>
+                <div>
+                    <table id='empTable' class='display dataTable' width='100%'>
+                        <thead>
+                            <tr class="row text-center ">
+                                <th>Order No</th>
+                                <th>Name</th>
+                                <th>Mobile</th>
+                                <th>Client</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for row in data %}
+                            <tr>
+                                <td>{{row[0]}}</td>
+                                <td>{{row[1]}}</td>
+                                <td>{{row[2]}}</td>
+                                <td>{{row[3]}}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script>
+        //$(document).ready(function () {
+        //    //debugger;
+        //    var empDataTable = $('#empTable').DataTable({
+        //        'processing': false,
+        //        'serverSide': false,
+        //        'serverMethod': 'POST',
+        //        'ajax': {
+        //            'url': '/ajaxfile'
+        //        },
+        //        'lengthMenu': [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]],
+        //        searching: false,
+        //        sort: false,
+        //        "serverSide": false,
+        //        'columns': [
+        //            { data: 'name' },
+        //            { data: 'products' },
+        //            //{ data: 'age' },
+        //            //{ data: 'salary' },
+        //            //{ data: 'office' },
+        //        ]
+        //    });
+        //});
+
+
+        //< div class="container-fluid" >
+        //    <div class="container-fluid">
+        //        <div class="container-fluid nav pynavbar">
+        //            <div class="container-fluid nav-item navcon ">
+        //                <span class="material-symbols-outlined homeicon">database</span>
+        //                <a class="slo" href=" {{ url_for('ajaxfile') }}" name="dt">Sale Order</a>-->
+        //                <!--<span class="material-symbols-outlined homeicon">Home</span>
+        //                <a href="{{ url_for('home') }}">Home</a>-->
+        //                <!--<input type="submit" name="d" value="MyData" />-->
+        //                <!--<a href="Data.html" name="d"> MyData</a>-->
+        //                <!--<span class="material-symbols-outlined">account_circle</span>
+        //                <a href="{{ url_for('home') }}">Profile</a>-->
+        //                <!--</div>-->
+        //            <!--<div class="logbtn btn">
+        //                <input id="sub" type="submit" name="logout" value="LogOut" />
+        //                <span class="material-symbols-outlined text-center">login</span>
+        //            </div>-->
+        //            <!--</div>
+        //    </div>
+        //</div >
+    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+</body>
+</html>

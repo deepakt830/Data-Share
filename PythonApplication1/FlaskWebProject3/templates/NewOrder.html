@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Order New</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+    <link href='https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css' rel='stylesheet' type='text/css'>
+    <style>
+        .registerform {
+            width: 35%;
+            height: 35%;
+            border: 3px solid;
+            border-radius: 5px;
+            margin-top: 10vh;
+            border-color: #337ab7;
+        }
+
+        .btn {
+            margin-bottom: 0%;
+            /*margin-top: 0%;
+            padding-top:0%;
+            padding-bottom:0%;*/
+            text-align: center;
+            justify-content: center;
+            width: 30vw;
+        }
+
+        .myForm {
+            margin-bottom: 0%;
+        }
+
+        .subbtn {
+            margin-top: 2vh;
+            margin-bottom: 1vh;
+        }
+
+        .backbtn {
+            margin-top: 1vh;
+            margin-bottom: 2vh;
+        }
+    </style>
+</head>
+<body>
+    <form action="/insertorder" method="post">
+        <div class="container-fluid mt-2 justify-content-center">
+            <div class="container-fluid form-check">
+                <div class="container-fluid registerform w-50 border-primary">
+                    <div class="myForm form-group border-primary ">
+                        <h3 class="">New Order </h3>
+                        <label ID="Label1">Order Number</label>
+                        <input ID="neworder" type="text" name="neworder" class="form-control" />
+                        <!--<input id="ordno" type="checkbox" />-->
+                        <label ID="Label2">Name</label>
+                        <input ID="cname" type="text" name="cname" class="form-control" />
+                        <label ID="Label3">Mobile</label>
+                        <input ID="phn" type="tel" name="phn" class="form-control" />
+                        <label ID="Label4">Client</label>
+                        <input ID="clints" type="text" name="clints" class="form-control" />
+                    </div>
+                    <div class="subbtn text-center">
+                        <input ID="Sub" type="button" Text="Submit" value="Submit" class="btn btn-primary text-center w-100" onclick="subndback();" />
+                    </div>
+                    <div class="backbtn text-center">
+                        <a href=back><input ID="Back" Text="back" value="Back" class="btn btn-primary text-center w-100 " /></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script>
+        function subndback() {
+            var order = $("#neworder").val();
+            var custname = $("#cname").val();
+            var mob = $("#phn").val();
+            var allclients = $("#clints").selecte();
+            debugger;
+            $.ajax({
+                url: "/insertorder",
+                data: { order: order, custname: custname, mob: mob, allclients: allclients },
+                type: "POST",
+                //contentType: "application/json",
+                dataType: 'json',
+                success: function (value) {
+                    alert("Success")
+                    //alert('somil')
+                    ////window.location.replace("/home");
+                    window.location.reload = 'http://localhost:5000/insertorder';
+                },
+                 error: function (value) {
+                    alert("Login Error:" + value.d);
+                }
+            });
+        }
+        //$(document).ready(function () {
+        //    //debugger;
+        //    var empDataTable = $('#empTable').DataTable({
+        //        'processing': false,
+        //        'serverSide': false,
+        //        'serverMethod': 'POST',
+        //        'ajax': {
+        //            'url': '/ajaxfile'
+        //        },
+        //        'lengthMenu': [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]],
+        //        searching: false,
+        //        sort: false,
+        //        "serverSide": false,
+        //        'columns': [
+        //            { data: 'name' },
+        //            { data: 'products' },
+        //            //{ data: 'age' },
+        //            //{ data: 'salary' },
+        //            //{ data: 'office' },
+        //        ]
+        //    });
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+</body>
+</html>
